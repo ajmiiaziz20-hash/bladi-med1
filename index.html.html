@@ -1,0 +1,3010 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLADI MED - الطب البيولوجي الطبيعي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;600;700;800;900&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #0f4c3a;
+            --secondary-green: #2d7d5e;
+            --accent-green: #4ade80;
+            --light-green: #dcfce7;
+            --sage-green: #86efac;
+            --forest-green: #064e3b;
+            --cream: #fefffe;
+            --gold: #f59e0b;
+            --warm-white: #f8fafc;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --gradient-1: linear-gradient(135deg, #0f4c3a 0%, #2d7d5e 50%, #4ade80 100%);
+            --gradient-2: linear-gradient(135deg, #4ade80 0%, #86efac 100%);
+            --gradient-3: radial-gradient(circle at 50% 50%, #4ade80, #0f4c3a);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --shadow-modern: 0 25px 50px -12px rgba(15, 76, 58, 0.25);
+            --shadow-hover: 0 35px 60px -12px rgba(15, 76, 58, 0.35);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Source Sans Pro', 'Amiri', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
+            background-attachment: fixed;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Modern Floating Particles */
+        .floating-leaves {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .leaf {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+            opacity: 0.6;
+            box-shadow: 0 0 20px var(--accent-green);
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(100vh) rotate(0deg) scale(0.5); 
+                opacity: 0; 
+            }
+            10% { opacity: 0.8; }
+            50% { 
+                transform: translateY(50vh) rotate(180deg) scale(1.2); 
+                opacity: 1;
+            }
+            90% { opacity: 0.8; }
+        }
+
+        /* Modern Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            gap: 5px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            padding: 8px;
+        }
+
+        /* Tunisian Flag */
+        .tunisian-flag {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .flag-container {
+            width: 84px;
+            height: 56px;
+            background: #CE1126;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(206, 17, 38, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            animation: flagWave 3s ease-in-out infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .flag-container:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(206, 17, 38, 0.6);
+        }
+
+        @keyframes flagWave {
+            0%, 100% { transform: perspective(100px) rotateY(0deg); }
+            25% { transform: perspective(100px) rotateY(-3deg); }
+            75% { transform: perspective(100px) rotateY(3deg); }
+        }
+
+        .flag-red {
+            width: 100%;
+            height: 100%;
+            background: #CE1126;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .flag-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 35px;
+            height: 35px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            overflow: visible;
+        }
+
+        .flag-crescent {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border: 2.5px solid #CE1126;
+            border-radius: 50%;
+            border-right-color: transparent;
+            border-top-color: transparent;
+            left: 6px;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .flag-star {
+            position: absolute;
+            color: #CE1126;
+            font-size: 8px;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: starTwinkle 2s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
+            50% { opacity: 0.8; transform: translateY(-50%) scale(1.1); }
+        }
+
+        .flag-label {
+            font-size: 12px;
+            color: white;
+            font-weight: 600;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            padding: 6px 12px;
+            border-radius: 15px;
+            border: 1px solid var(--glass-border);
+            text-align: center;
+            white-space: nowrap;
+            animation: labelGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes labelGlow {
+            0%, 100% { 
+                box-shadow: 0 0 10px rgba(231, 0, 19, 0.3);
+            }
+            50% { 
+                box-shadow: 0 0 20px rgba(231, 0, 19, 0.6), 0 0 30px rgba(231, 0, 19, 0.3);
+            }
+        }
+
+        .lang-btn {
+            padding: 12px 20px;
+            background: transparent;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            color: white;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lang-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 25px;
+        }
+
+        .lang-btn.active::before,
+        .lang-btn:hover::before {
+            opacity: 1;
+        }
+
+        .lang-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Modern Header */
+        header {
+            background: var(--gradient-1);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.1'%3E%3Cpath d='M0,0 L100,100 M100,0 L0,100'/%3E%3C/g%3E%3C/svg%3E");
+            animation: drift 15s ease-in-out infinite;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translateX(0) translateY(0) rotate(0deg); }
+            25% { transform: translateX(20px) translateY(-10px) rotate(1deg); }
+            50% { transform: translateX(-10px) translateY(-20px) rotate(-0.5deg); }
+            75% { transform: translateX(-20px) translateY(-10px) rotate(0.5deg); }
+        }
+
+        .logo {
+            font-family: 'Inter', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #ffffff, #4ade80, #86efac);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: logoGlow 4s ease-in-out infinite alternate;
+            letter-spacing: -0.02em;
+        }
+
+        @keyframes logoGlow {
+            from { 
+                filter: drop-shadow(0 0 20px rgba(74, 222, 128, 0.3));
+            }
+            to { 
+                filter: drop-shadow(0 0 40px rgba(74, 222, 128, 0.6));
+            }
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* Modern Navigation */
+        nav {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 0 20px;
+        }
+
+        .nav-item {
+            padding: 12px 24px;
+            cursor: pointer;
+            color: white;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            font-size: 15px;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-2);
+            opacity: 0;
+            transition: all 0.3s ease;
+            border-radius: 30px;
+            transform: scale(0.8);
+        }
+
+        .nav-item:hover::before,
+        .nav-item.active::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .nav-item span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Modern Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            display: none;
+            padding: 80px 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(40px) scale(0.98);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 6px;
+            background: var(--gradient-2);
+            border-radius: 3px;
+        }
+
+        /* Modern Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-2);
+        }
+
+        .card:hover {
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-green);
+        }
+
+        .card:hover::before {
+            height: 100%;
+            opacity: 0.1;
+        }
+
+        .card-icon {
+            width: 90px;
+            height: 90px;
+            background: var(--gradient-3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .card-icon::after {
+            content: '';
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            border: 2px solid var(--accent-green);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: pulse 3s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.1; }
+        }
+
+        .card-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .card-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
+
+        .card-benefits {
+            list-style: none;
+            margin-top: 25px;
+        }
+
+        .card-benefits li {
+            padding: 10px 0;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            padding-left: 30px;
+            font-size: 14px;
+        }
+
+        .card-benefits li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+            color: var(--accent-green);
+            font-weight: bold;
+        }
+
+        /* Modern AI Consultation */
+        .ai-consultation {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            padding: 60px;
+            color: white;
+            text-align: center;
+            margin: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-consultation::before {
+            content: '🤖';
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 4rem;
+            opacity: 0.2;
+        }
+
+        .ai-consultation h3 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .ai-chat {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .chat-input {
+            width: 100%;
+            padding: 18px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .chat-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .chat-input:focus {
+            border-color: var(--accent-green);
+            box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.2);
+        }
+
+        .chat-button {
+            background: var(--gradient-2);
+            color: var(--text-dark);
+            border: none;
+            padding: 18px 40px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: var(--shadow-modern);
+        }
+
+        .chat-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .chat-response {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--text-dark);
+            padding: 24px;
+            border-radius: 20px;
+            margin-top: 25px;
+            text-align: right;
+            display: none;
+            animation: slideIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+        }
+
+        @keyframes slideIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(20px) scale(0.95);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Modern Products Section */
+        .product-showcase {
+            margin: 60px 0 80px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-showcase::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, var(--accent-green), transparent);
+            animation: rotate 10s linear infinite;
+            opacity: 0.1;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .main-product {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .cup-container {
+            font-size: 10rem;
+            position: relative;
+            animation: levitate 6s ease-in-out infinite;
+            filter: drop-shadow(0 20px 40px rgba(74, 222, 128, 0.3));
+        }
+
+        @keyframes levitate {
+            0%, 100% { transform: translateY(0px) rotateY(0deg); }
+            25% { transform: translateY(-20px) rotateY(5deg); }
+            50% { transform: translateY(-10px) rotateY(0deg); }
+            75% { transform: translateY(-25px) rotateY(-5deg); }
+        }
+
+        .herbs-mix {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.5rem;
+            animation: sparkleModern 3s ease-in-out infinite;
+        }
+
+        @keyframes sparkleModern {
+            0%, 100% { 
+                opacity: 0.8; 
+                transform: translateX(-50%) scale(1) rotate(0deg);
+            }
+            50% { 
+                opacity: 1; 
+                transform: translateX(-50%) scale(1.2) rotate(10deg);
+            }
+        }
+
+        .product-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(74, 222, 128, 0.4) 0%, transparent 60%);
+            border-radius: 50%;
+            animation: pulseModern 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseModern {
+            0%, 100% { 
+                transform: translate(-50%, -50%) scale(1); 
+                opacity: 0.4; 
+            }
+            50% { 
+                transform: translate(-50%, -50%) scale(1.3); 
+                opacity: 0.1; 
+            }
+        }
+
+        .product-info {
+            flex: 2;
+            color: white;
+        }
+
+        .product-info h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 25px;
+            letter-spacing: -0.02em;
+        }
+
+        .product-info p {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .product-benefits h4 {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .benefit-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .benefit-list li {
+            padding: 15px 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-list li:hover {
+            color: var(--accent-green);
+            padding-left: 10px;
+        }
+
+        /* Modern Product Cards */
+        .product-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 45px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            color: white;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-2);
+            opacity: 0.8;
+        }
+
+        .product-card:hover {
+            transform: translateY(-25px) scale(1.03);
+            box-shadow: 0 40px 80px rgba(74, 222, 128, 0.25);
+            border-color: var(--accent-green);
+        }
+
+        .product-icon {
+            width: 110px;
+            height: 110px;
+            background: var(--gradient-3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 3.5rem;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(74, 222, 128, 0.4);
+        }
+
+        .product-icon::after {
+            content: '';
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            border: 3px solid var(--accent-green);
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: rippleModern 3s infinite ease-out;
+        }
+
+        @keyframes rippleModern {
+            0% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(1.2); opacity: 0.2; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        .ingredients-list {
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .ingredients-list h5 {
+            color: var(--accent-green);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .product-price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            border: 2px solid var(--accent-green);
+            position: relative;
+        }
+
+        .product-price::before {
+            content: '💎';
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* Modern Usage Steps */
+        .usage-section {
+            margin: 100px 0;
+            text-align: center;
+        }
+
+        .usage-section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 60px;
+            letter-spacing: -0.02em;
+        }
+
+        .usage-steps {
+            display: flex;
+            justify-content: space-around;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .usage-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            color: white;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-3);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 900;
+            margin: 0 auto 30px;
+            position: relative;
+            box-shadow: var(--shadow-modern);
+        }
+
+        .step-number::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-green), transparent);
+            opacity: 0.6;
+            border-radius: 2px;
+        }
+
+        .usage-step:last-child .step-number::after {
+            display: none;
+        }
+
+        .step-content h4 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .step-content p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        /* Modern Order Section */
+        .order-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            color: white;
+            padding: 70px;
+            border-radius: 32px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin: 60px 0;
+        }
+
+        .order-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 40%, rgba(74, 222, 128, 0.05) 50%, transparent 60%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        .order-section h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .order-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .order-feature {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .order-feature:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            filter: drop-shadow(0 0 10px rgba(74, 222, 128, 0.5));
+        }
+
+        .order-button {
+            background: var(--gradient-2);
+            color: var(--text-dark);
+            border: none;
+            padding: 25px 60px;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 1;
+            box-shadow: var(--shadow-modern);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .order-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Modern Footer */
+        footer {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--glass-border);
+            color: white;
+            padding: 80px 0 40px;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Inter', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tunisia-pride {
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(206, 17, 38, 0.1);
+            border: 1px solid rgba(206, 17, 38, 0.3);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .footer-flag {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .footer-flag-container {
+            width: 75px;
+            height: 50px;
+            background: #CE1126;
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(206, 17, 38, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: footerFlagWave 4s ease-in-out infinite;
+        }
+
+        @keyframes footerFlagWave {
+            0%, 100% { transform: perspective(80px) rotateY(0deg); }
+            50% { transform: perspective(80px) rotateY(8deg); }
+        }
+
+        .footer-flag-red {
+            width: 100%;
+            height: 100%;
+            background: #CE1126;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .footer-flag-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 31px;
+            height: 31px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            overflow: visible;
+        }
+
+        .footer-flag-crescent {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border: 2.5px solid #CE1126;
+            border-radius: 50%;
+            border-right-color: transparent;
+            border-top-color: transparent;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .footer-flag-star {
+            position: absolute;
+            color: #CE1126;
+            font-size: 7px;
+            right: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: footerStarTwinkle 3s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        @keyframes footerStarTwinkle {
+            0%, 100% { opacity: 1; transform: translateY(-50%) scale(1); }
+            50% { opacity: 0.7; transform: translateY(-50%) scale(1.2); }
+        }
+
+        .pride-text {
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #CE1126, #ff4757);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: prideGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes prideGlow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 8px rgba(206, 17, 38, 0.6));
+            }
+            50% { 
+                filter: drop-shadow(0 0 16px rgba(206, 17, 38, 0.8));
+            }
+        }
+
+        .footer-text {
+            opacity: 0.8;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1.8rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-link:hover {
+            background: var(--accent-green);
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: var(--shadow-modern);
+        }
+
+        /* Modern Responsive Design */
+        @media (max-width: 768px) {
+            .logo { font-size: 3rem; }
+            .tagline { font-size: 1.2rem; }
+            .nav-container { 
+                flex-wrap: wrap; 
+                gap: 8px; 
+                justify-content: center;
+            }
+            .nav-item {
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+            .section-title { font-size: 2.5rem; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .ai-consultation { padding: 30px 20px; }
+            .main-product { 
+                flex-direction: column; 
+                gap: 40px;
+            }
+            .cup-container {
+                font-size: 6rem;
+            }
+            .product-info h3 {
+                font-size: 2.2rem;
+            }
+            .usage-steps { 
+                flex-direction: column; 
+                gap: 40px;
+            }
+            .step-number::after {
+                display: none;
+            }
+            .order-benefits { 
+                grid-template-columns: 1fr; 
+            }
+            .order-section {
+                padding: 40px 20px;
+            }
+            .language-switcher {
+                top: 20px;
+                right: 20px;
+                flex-direction: column;
+                gap: 5px;
+            }
+            .tunisian-flag {
+                top: 20px;
+                left: 20px;
+            }
+            .flag-container {
+                width: 72px;
+                height: 48px;
+            }
+            .flag-circle {
+                width: 30px;
+                height: 30px;
+            }
+            .flag-crescent {
+                width: 15px;
+                height: 15px;
+                border-width: 2px;
+            }
+            .flag-star {
+                font-size: 7px;
+            }
+            .flag-label {
+                font-size: 11px;
+                padding: 5px 10px;
+            }
+            .product-showcase {
+                padding: 30px 20px;
+            }
+        }
+
+        /* RTL Support Enhanced */
+        [dir="rtl"] {
+            text-align: right;
+        }
+
+        [dir="rtl"] .nav-container {
+            direction: rtl;
+        }
+
+        [dir="rtl"] .card-benefits li {
+            padding-right: 30px;
+            padding-left: 0;
+        }
+
+        [dir="rtl"] .card-benefits li::before {
+            right: 0;
+            left: auto;
+        }
+
+        [dir="rtl"] .step-number::after {
+            left: -120px;
+            right: auto;
+        }
+
+        /* Language specific fonts enhanced */
+        .arabic-text {
+            font-family: 'Amiri', serif;
+            line-height: 2;
+        }
+
+        .french-text, .english-text {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Modern scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 76, 58, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-green);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--sage-green);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo { font-size: 2.5rem; }
+            .tagline { font-size: 1.2rem; }
+            .nav-container { flex-direction: column; gap: 10px; }
+            .section-title { font-size: 2rem; }
+            .cards-grid { grid-template-columns: 1fr; }
+            .ai-consultation { padding: 30px 20px; }
+            .main-product { flex-direction: column; }
+            .usage-steps { flex-direction: column; }
+            .order-benefits { grid-template-columns: 1fr; }
+        }
+
+        /* Products Section Styles */
+        .product-showcase {
+            margin: 40px 0 60px;
+            background: linear-gradient(135deg, var(--light-green), var(--warm-white));
+            border-radius: 30px;
+            padding: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-product {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .product-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .cup-container {
+            font-size: 8rem;
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .herbs-mix {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            animation: sparkle 2s ease-in-out infinite alternate;
+        }
+
+        .product-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(124, 179, 66, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0% { opacity: 0.7; transform: translateX(-50%) scale(0.9); }
+            100% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.1; }
+        }
+
+        .product-info {
+            flex: 2;
+        }
+
+        .product-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+        }
+
+        .product-info p {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .product-benefits h4 {
+            color: var(--secondary-green);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .benefit-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .benefit-list li {
+            padding: 12px 0;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(124, 179, 66, 0.1);
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 15px 50px rgba(45, 80, 22, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid transparent;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, var(--accent-green), var(--sage-green));
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 70px rgba(45, 80, 22, 0.2);
+            border-color: var(--accent-green);
+        }
+
+        .product-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--accent-green), var(--sage-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .product-icon::after {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border: 3px solid var(--accent-green);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: ripple 2s infinite ease-out;
+        }
+
+        @keyframes ripple {
+            0% { transform: scale(1); opacity: 0.3; }
+            100% { transform: scale(1.3); opacity: 0; }
+        }
+
+        .ingredients-list {
+            margin: 25px 0;
+            padding: 20px;
+            background: var(--light-green);
+            border-radius: 15px;
+        }
+
+        .ingredients-list h5 {
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .product-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--gold);
+            text-align: center;
+            margin-top: 25px;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--warm-white), var(--light-green));
+            border-radius: 20px;
+            border: 2px solid var(--accent-green);
+        }
+
+        .usage-section {
+            margin: 80px 0;
+            text-align: center;
+        }
+
+        .usage-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 50px;
+        }
+
+        .usage-steps {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .usage-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .step-number::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: 100px;
+            height: 3px;
+            background: var(--accent-green);
+            opacity: 0.3;
+        }
+
+        .usage-step:last-child .step-number::after {
+            display: none;
+        }
+
+        .step-content h4 {
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+
+        .step-content p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .order-section {
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: white;
+            padding: 60px;
+            border-radius: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .order-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm10 0c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .order-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .order-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .order-feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+        }
+
+        .order-button {
+            background: var(--gold);
+            color: var(--text-dark);
+            border: none;
+            padding: 20px 50px;
+            border-radius: 30px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .order-button:hover {
+            background: #e6c347;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        /* RTL Support */
+        [dir="rtl"] {
+            text-align: right;
+        }
+
+        [dir="rtl"] .nav-container {
+            direction: rtl;
+        }
+
+        [dir="rtl"] .card-benefits li {
+            padding-right: 25px;
+            padding-left: 0;
+        }
+
+        [dir="rtl"] .card-benefits li::before {
+            right: 0;
+            left: auto;
+        }
+
+        /* Language specific fonts */
+        .arabic-text {
+            font-family: 'Amiri', serif;
+            line-height: 1.8;
+        }
+
+        .french-text, .english-text {
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Animation -->
+    <div class="floating-leaves">
+        <div class="leaf" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="leaf" style="left: 20%; animation-delay: 2s;"></div>
+        <div class="leaf" style="left: 30%; animation-delay: 4s;"></div>
+        <div class="leaf" style="left: 40%; animation-delay: 6s;"></div>
+        <div class="leaf" style="left: 50%; animation-delay: 8s;"></div>
+        <div class="leaf" style="left: 60%; animation-delay: 10s;"></div>
+        <div class="leaf" style="left: 70%; animation-delay: 12s;"></div>
+        <div class="leaf" style="left: 80%; animation-delay: 14s;"></div>
+    </div>
+
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" onclick="switchLanguage('ar')"><span>العربية</span></button>
+        <button class="lang-btn" onclick="switchLanguage('fr')"><span>Français</span></button>
+        <button class="lang-btn" onclick="switchLanguage('en')"><span>English</span></button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-pattern"></div>
+        <div class="container">
+            <h1 class="logo" id="logo">BLADI MED</h1>
+            <p class="tagline" id="tagline">الطب البيولوجي الطبيعي - رحلتك نحو الصحة الطبيعية</p>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="nav-item active" onclick="showSection('home')" id="nav-home"><span>الرئيسية</span></div>
+            <div class="nav-item" onclick="showSection('herbs')" id="nav-herbs"><span>الأعشاب الطبية</span></div>
+            <div class="nav-item" onclick="showSection('products')" id="nav-products"><span>منتجاتنا</span></div>
+            <div class="nav-item" onclick="showSection('benefits')" id="nav-benefits"><span>الفوائد</span></div>
+            <div class="nav-item" onclick="showSection('ai-consult')" id="nav-ai"><span>استشارة ذكية</span></div>
+            <div class="nav-item" onclick="showSection('contact')" id="nav-contact"><span>تواصل معنا</span></div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <h2 class="section-title" id="home-title">مرحباً بكم في عالم الطب الطبيعي</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🌿</div>
+                    <h3 class="card-title" id="card1-title">الطب البديل</h3>
+                    <p class="card-description" id="card1-desc">اكتشف قوة الطبيعة في علاج الأمراض والوقاية منها بطرق آمنة وفعالة</p>
+                    <ul class="card-benefits">
+                        <li id="benefit1">آمن وبدون آثار جانبية</li>
+                        <li id="benefit2">مستخرج من النباتات الطبيعية</li>
+                        <li id="benefit3">مُختبر علمياً</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚗️</div>
+                    <h3 class="card-title" id="card2-title">بديل للكيماويات</h3>
+                    <p class="card-description" id="card2-desc">تجنب المخاطر الصحية للأدوية الكيماوية واختر البدائل الطبيعية الآمنة</p>
+                    <ul class="card-benefits">
+                        <li id="benefit4">تقليل السموم في الجسم</li>
+                        <li id="benefit5">تعزيز المناعة الطبيعية</li>
+                        <li id="benefit6">علاج شامل للجسم</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🧬</div>
+                    <h3 class="card-title" id="card3-title">التقنية الحيوية</h3>
+                    <p class="card-description" id="card3-desc">استفد من أحدث التقنيات الحيوية في استخلاص المواد الفعالة من النباتات</p>
+                    <ul class="card-benefits">
+                        <li id="benefit7">تقنيات استخلاص متطورة</li>
+                        <li id="benefit8">فحوصات جودة صارمة</li>
+                        <li id="benefit9">توثيق علمي موثوق</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Herbs Section -->
+        <section id="herbs" class="section">
+            <h2 class="section-title" id="herbs-title">الأعشاب الطبية المعجزة</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🌱</div>
+                    <h3 class="card-title" id="thyme-title">الزعتر (Thyme)</h3>
+                    <p class="card-description" id="thyme-desc">نبات عطري مقدس يحتوي على مركبات طبيعية قوية مضادة للبكتيريا والفيروسات</p>
+                    <ul class="card-benefits">
+                        <li id="thyme1">مضاد حيوي طبيعي قوي</li>
+                        <li id="thyme2">يقوي الجهاز التنفسي</li>
+                        <li id="thyme3">يحسن الهضم</li>
+                        <li id="thyme4">مضاد للأكسدة</li>
+                        <li id="thyme5">يهدئ السعال والالتهابات</li>
+                        <li id="thyme6">يخفض ضغط الدم المرتفع</li>
+                        <li id="thyme7">يحارب الفطريات الجلدية</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🧄</div>
+                    <h3 class="card-title" id="ginger-title">الزنجبيل (Ginger)</h3>
+                    <p class="card-description" id="ginger-desc">جذر سحري يحتوي على مركبات الجنجيرول المضادة للالتهابات والغثيان</p>
+                    <ul class="card-benefits">
+                        <li id="ginger1">يقضي على الغثيان والقيء</li>
+                        <li id="ginger2">مضاد قوي للالتهابات</li>
+                        <li id="ginger3">يحسن الدورة الدموية</li>
+                        <li id="ginger4">يساعد في الهضم</li>
+                        <li id="ginger5">يخفف آلام المفاصل</li>
+                        <li id="ginger6">يقوي المناعة</li>
+                        <li id="ginger7">يساعد في إنقاص الوزن</li>
+                        <li id="ginger8">يخفض السكر في الدم</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🍯</div>
+                    <h3 class="card-title" id="honey-title">العسل الطبيعي</h3>
+                    <p class="card-description" id="honey-desc">مضاد حيوي طبيعي ومصدر طاقة صحي يحتوي على أكثر من 180 مركب نشط</p>
+                    <ul class="card-benefits">
+                        <li id="honey1">مضاد حيوي ومضاد للفطريات</li>
+                        <li id="honey2">يسرع شفاء الجروح</li>
+                        <li id="honey3">يهدئ التهاب الحلق</li>
+                        <li id="honey4">غني بمضادات الأكسدة</li>
+                        <li id="honey5">يحسن صحة القلب</li>
+                        <li id="honey6">يعالج قرح المعدة</li>
+                        <li id="honey7">يحسن جودة النوم</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌾</div>
+                    <h3 class="card-title" id="fenugreek-title">الحلبة (Fenugreek)</h3>
+                    <p class="card-description" id="fenugreek-desc">بذور ذهبية غنية بالبروتينات والفيتامينات، معروفة بفوائدها للنساء والجهاز الهضمي</p>
+                    <ul class="card-benefits">
+                        <li id="fenugreek1">تنظم مستوى السكر في الدم</li>
+                        <li id="fenugreek2">تزيد إدرار حليب الأم</li>
+                        <li id="fenugreek3">تقوي الشعر وتمنع تساقطه</li>
+                        <li id="fenugreek4">تحسن الهضم والشهية</li>
+                        <li id="fenugreek5">تخفض الكولسترول الضار</li>
+                        <li id="fenugreek6">تساعد في زيادة الوزن الصحي</li>
+                        <li id="fenugreek7">تقوي العظام والمفاصل</li>
+                        <li id="fenugreek8">تعالج التهابات الجلد</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌼</div>
+                    <h3 class="card-title" id="chamomile-title">البابونج (Chamomile)</h3>
+                    <p class="card-description" id="chamomile-desc">زهرة الهدوء والسكينة، تحتوي على الأبيجنين والبيسابولول لتهدئة الأعصاب والالتهابات</p>
+                    <ul class="card-benefits">
+                        <li id="chamomile1">يهدئ الأعصاب والقلق</li>
+                        <li id="chamomile2">يحسن جودة النوم</li>
+                        <li id="chamomile3">يعالج مشاكل الهضم</li>
+                        <li id="chamomile4">مضاد طبيعي للالتهابات</li>
+                        <li id="chamomile5">يخفف آلام الدورة الشهرية</li>
+                        <li id="chamomile6">يساعد في علاج الأكزيما</li>
+                        <li id="chamomile7">يقوي الجهاز المناعي</li>
+                        <li id="chamomile8">يخفض ضغط الدم</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🍃</div>
+                    <h3 class="card-title" id="mint-title">النعناع (Mint)</h3>
+                    <p class="card-description" id="mint-desc">عشبة منعشة غنية بالمنثول، ممتازة للجهاز الهضمي والتنفسي والتبريد الطبيعي</p>
+                    <ul class="card-benefits">
+                        <li id="mint1">يحسن الهضم ويمنع الانتفاخ</li>
+                        <li id="mint2">ينعش النفس ويطهر الفم</li>
+                        <li id="mint3">يخفف أعراض القولون العصبي</li>
+                        <li id="mint4">يهدئ الصداع والشقيقة</li>
+                        <li id="mint5">يخفف احتقان الجيوب الأنفية</li>
+                        <li id="mint6">مضاد للبكتيريا والفيروسات</li>
+                        <li id="mint7">يساعد في التخسيس</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌿</div>
+                    <h3 class="card-title" id="sage-title">الميرمية (Sage)</h3>
+                    <p class="card-description" id="sage-desc">عشبة الحكمة والذاكرة، غنية بمضادات الأكسدة والمركبات المنشطة للدماغ</p>
+                    <ul class="card-benefits">
+                        <li id="sage1">تحسن الذاكرة والتركيز</li>
+                        <li id="sage2">تنظم الهرمونات الأنثوية</li>
+                        <li id="sage3">تخفف أعراض سن اليأس</li>
+                        <li id="sage4">مضادة للالتهابات والبكتيريا</li>
+                        <li id="sage5">تخفض مستوى السكر</li>
+                        <li id="sage6">تقوي الجهاز العصبي</li>
+                        <li id="sage7">تحسن صحة الفم واللثة</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🫖</div>
+                    <h3 class="card-title" id="green-tea-title">الشاي الأخضر (Green Tea)</h3>
+                    <p class="card-description" id="green-tea-desc">كنز صحي يحتوي على الكاتيشين والبوليفينول، مشروب طول العمر والحيوية</p>
+                    <ul class="card-benefits">
+                        <li id="green-tea1">محارب قوي للسرطان</li>
+                        <li id="green-tea2">يسرع عملية حرق الدهون</li>
+                        <li id="green-tea3">يحمي صحة القلب</li>
+                        <li id="green-tea4">يحسن وظائف الدماغ</li>
+                        <li id="green-tea5">يخفض الكولسترول</li>
+                        <li id="green-tea6">مضاد للشيخوخة</li>
+                        <li id="green-tea7">ينظم ضغط الدم</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌰</div>
+                    <h3 class="card-title" id="black-seed-title">حبة البركة (Black Seed)</h3>
+                    <p class="card-description" id="black-seed-desc">"دواء لكل داء إلا الموت" - بذور سوداء صغيرة تحتوي على الثيموكينون المعجز</p>
+                    <ul class="card-benefits">
+                        <li id="black-seed1">تقوي الجهاز المناعي بقوة</li>
+                        <li id="black-seed2">مضادة للسرطان والأورام</li>
+                        <li id="black-seed3">تعالج الربو والحساسية</li>
+                        <li id="black-seed4">تنظم السكر والضغط</li>
+                        <li id="black-seed5">تحمي الكبد من السموم</li>
+                        <li id="black-seed6">تحسن الخصوبة</li>
+                        <li id="black-seed7">مضادة للالتهابات</li>
+                        <li id="black-seed8">تعالج مشاكل الجلد</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="section">
+            <h2 class="section-title" id="products-title">منتجاتنا الطبيعية</h2>
+            
+            <!-- Product Showcase -->
+            <div class="product-showcase">
+                <div class="main-product">
+                    <div class="product-image">
+                        <div class="cup-container">
+                            🥤
+                            <div class="herbs-mix">🌿🌼🍃</div>
+                            <div class="product-glow"></div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3 id="main-product-title">كوب الأعشاب الطبيعية المختلطة</h3>
+                        <p id="main-product-subtitle">خلطة مثالية من أفضل الأعشاب الطبية في كوب واحد مريح</p>
+                        <div class="product-benefits">
+                            <h4 id="why-our-product">لماذا منتجنا مميز؟</h4>
+                            <ul class="benefit-list">
+                                <li id="benefit-convenience">🎯 سهولة الاستخدام - لا حاجة لشراء أعشاب منفصلة</li>
+                                <li id="benefit-expert">👨‍⚕️ خلطة مدروسة من خبراء الطب البديل</li>
+                                <li id="benefit-quality">✅ أعشاب عضوية 100% بدون مواد كيماوية</li>
+                                <li id="benefit-eco">♻️ كوب كرتوني صديق للبيئة قابل للتحلل</li>
+                                <li id="benefit-fresh">🌱 طازج ومُعبأ حديثاً بتقنية التفريغ</li>
+                                <li id="benefit-affordable">💰 سعر اقتصادي مقارنة بشراء الأعشاب منفردة</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Varieties -->
+            <div class="cards-grid">
+                <div class="product-card">
+                    <div class="product-icon">🌅</div>
+                    <h3 class="card-title" id="morning-mix-title">خلطة الصباح المنشطة</h3>
+                    <p class="card-description" id="morning-mix-desc">مزيج من الشاي الأخضر والزنجبيل والنعناع لبداية يوم مليء بالحيوية والنشاط</p>
+                    <div class="ingredients-list">
+                        <h5 id="ingredients-label">المكونات:</h5>
+                        <ul class="card-benefits">
+                            <li id="morning-ing1">🫖 شاي أخضر عضوي (40%)</li>
+                            <li id="morning-ing2">🧄 زنجبيل مجفف (25%)</li>
+                            <li id="morning-ing3">🍃 نعناع طازج (20%)</li>
+                            <li id="morning-ing4">🌰 حبة البركة (10%)</li>
+                            <li id="morning-ing5">🍯 عسل طبيعي (5%)</li>
+                        </ul>
+                    </div>
+                    <div class="product-price" id="morning-price">25 دت</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">🌙</div>
+                    <h3 class="card-title" id="evening-mix-title">خلطة المساء المهدئة</h3>
+                    <p class="card-description" id="evening-mix-desc">تركيبة مثالية من البابونج والميرمية لنوم هادئ وراحة تامة</p>
+                    <div class="ingredients-list">
+                        <h5 id="ingredients-label2">المكونات:</h5>
+                        <ul class="card-benefits">
+                            <li id="evening-ing1">🌼 بابونج ألماني (35%)</li>
+                            <li id="evening-ing2">🌿 ميرمية عضوية (25%)</li>
+                            <li id="evening-ing3">🍃 نعناع خفيف (15%)</li>
+                            <li id="evening-ing4">🌱 زعتر بري (15%)</li>
+                            <li id="evening-ing5">🍯 عسل جبلي (10%)</li>
+                        </ul>
+                    </div>
+                    <div class="product-price" id="evening-price">25 دت</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">💪</div>
+                    <h3 class="card-title" id="immunity-mix-title">خلطة تقوية المناعة</h3>
+                    <p class="card-description" id="immunity-mix-desc">مزيج قوي من أفضل الأعشاب المناعية لحمايتك من الأمراض طوال السنة</p>
+                    <div class="ingredients-list">
+                        <h5 id="ingredients-label3">المكونات:</h5>
+                        <ul class="card-benefits">
+                            <li id="immunity-ing1">🌰 حبة البركة (30%)</li>
+                            <li id="immunity-ing2">🧄 زنجبيل مركز (25%)</li>
+                            <li id="immunity-ing3">🌱 زعتر جبلي (20%)</li>
+                            <li id="immunity-ing4">🫖 شاي أخضر (15%)</li>
+                            <li id="immunity-ing5">🍯 عسل مانوكا (10%)</li>
+                        </ul>
+                    </div>
+                    <div class="product-price" id="immunity-price">30 دت</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">🌸</div>
+                    <h3 class="card-title" id="women-mix-title">خلطة النساء الخاصة</h3>
+                    <p class="card-description" id="women-mix-desc">تركيبة مخصصة للنساء لتنظيم الهرمونات وتحسين الصحة الأنثوية</p>
+                    <div class="ingredients-list">
+                        <h5 id="ingredients-label4">المكونات:</h5>
+                        <ul class="card-benefits">
+                            <li id="women-ing1">🌾 حلبة عضوية (30%)</li>
+                            <li id="women-ing2">🌿 ميرمية طبيعية (25%)</li>
+                            <li id="women-ing3">🌼 بابونج ناعم (20%)</li>
+                            <li id="women-ing4">🧄 زنجبيل خفيف (15%)</li>
+                            <li id="women-ing5">🍯 عسل أبيض (10%)</li>
+                        </ul>
+                    </div>
+                    <div class="product-price" id="women-price">28 دت</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">🫀</div>
+                    <h3 class="card-title" id="heart-mix-title">خلطة صحة القلب</h3>
+                    <p class="card-description" id="heart-mix-desc">مزيج طبيعي لدعم صحة القلب والدورة الدموية وتنظيم ضغط الدم</p>
+                    <div class="ingredients-list">
+                        <h5 id="ingredients-label5">المكونات:</h5>
+                        <ul class="card-benefits">
+                            <li id="heart-ing1">🫖 شاي أخضر فاخر (35%)</li>
+                            <li id="heart-ing2">🌱 زعتر بري (25%)</li>
+                            <li id="heart-ing3">🧄 زنجبيل أحمر (20%)</li>
+                            <li id="heart-ing4">🌰 حبة البركة (15%)</li>
+                            <li id="heart-ing5">🍯 عسل سدر (5%)</li>
+                        </ul>
+                    </div>
+                    <div class="product-price" id="heart-price">32 دت</div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon">🧠</div>
+                    <h3 class="card-title" id="memory-mix-title">خلطة تقوية الذاكرة</h3>
+                    <p class="card-description" id="memory-mix-desc">تركيبة خاصة لتحسين التركيز والذاكرة ونشاط الدماغ للطلاب والعمال الفكريين</p>
+                    <div class="ingredients-list">
+                        <h5 id="ingredients-label6">المكونات:</h5>
+                        <ul class="card-benefits">
+                            <li id="memory-ing1">🌿 ميرمية مركزة (40%)</li>
+                            <li id="memory-ing2">🫖 شاي أخضر (25%)</li>
+                            <li id="memory-ing3">🍃 نعناع منعش (15%)</li>
+                            <li id="memory-ing4">🧄 زنجبيل طازج (10%)</li>
+                            <li id="memory-ing5">🍯 عسل طبيعي (10%)</li>
+                        </ul>
+                    </div>
+                    <div class="product-price" id="memory-price">30 دت</div>
+                </div>
+            </div>
+
+            <!-- How to Use Section -->
+            <div class="usage-section">
+                <h3 id="how-to-use-title">طريقة الاستخدام</h3>
+                <div class="usage-steps">
+                    <div class="usage-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4 id="step1-title">افتح الكوب</h4>
+                            <p id="step1-desc">افتح الكوب الكرتوني بعناية من الأعلى</p>
+                        </div>
+                    </div>
+                    <div class="usage-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4 id="step2-title">أضف الماء الساخن</h4>
+                            <p id="step2-desc">اسكب ماء مغلي (200 مل) على الخلطة</p>
+                        </div>
+                    </div>
+                    <div class="usage-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4 id="step3-title">انتظر واشرب</h4>
+                            <p id="step3-desc">اتركه 5-7 دقائق ثم احرك واستمتع بطعم الصحة</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Section -->
+            <div class="order-section">
+                <h3 id="order-title">اطلب الآن واحصل على صحة طبيعية</h3>
+                <div class="order-benefits">
+                    <div class="order-feature">
+                        <span class="feature-icon">🚚</span>
+                        <span id="feature1">توصيل مجاني لكامل تونس</span>
+                    </div>
+                    <div class="order-feature">
+                        <span class="feature-icon">💳</span>
+                        <span id="feature2">دفع عند الاستلام</span>
+                    </div>
+                    <div class="order-feature">
+                        <span class="feature-icon">✅</span>
+                        <span id="feature3">ضمان الجودة 100%</span>
+                    </div>
+                    <div class="order-feature">
+                        <span class="feature-icon">📞</span>
+                        <span id="feature4">استشارة مجانية مع كل طلب</span>
+                    </div>
+                </div>
+                <button class="order-button" id="order-btn">اطلب الآن - اتصل بنا</button>
+            </div>
+        </section>
+
+        <!-- Benefits Section -->
+        <section id="benefits" class="section">
+            <h2 class="section-title" id="benefits-title">لماذا الطب البيولوجي؟</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">💚</div>
+                    <h3 class="card-title" id="safety-title">الأمان أولاً</h3>
+                    <p class="card-description" id="safety-desc">المنتجات الطبيعية آمنة ولا تسبب أضراراً جانبية مثل الأدوية الكيماوية</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌍</div>
+                    <h3 class="card-title" id="sustainable-title">صديق للبيئة</h3>
+                    <p class="card-description" id="sustainable-desc">منتجات قابلة للتحلل ولا تلوث البيئة أو المياه الجوفية</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3 class="card-title" id="effective-title">فعالية مثبتة</h3>
+                    <p class="card-description" id="effective-desc">آلاف السنين من الاستخدام التقليدي مدعومة بالأبحاث العلمية الحديثة</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💰</div>
+                    <h3 class="card-title" id="cost-title">اقتصادي</h3>
+                    <p class="card-description" id="cost-desc">تكلفة أقل من العلاجات الكيماوية التقليدية</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Consultation Section -->
+        <section id="ai-consult" class="section">
+            <h2 class="section-title" id="ai-title">استشارة طبية ذكية</h2>
+            <div class="ai-consultation">
+                <h3 id="ai-chat-title">تحدث مع الطبيب الذكي</h3>
+                <p id="ai-chat-desc">اسأل عن الأعشاب المناسبة لحالتك الصحية واحصل على نصائح مخصصة</p>
+                <div class="ai-chat">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="اسأل عن أي عشب أو مشكلة صحية...">
+                    <button class="chat-button" onclick="sendMessage()" id="send-btn">إرسال السؤال</button>
+                    <div class="chat-response" id="chatResponse"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <h2 class="section-title" id="contact-title">تواصل معنا</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">📧</div>
+                    <h3 class="card-title" id="email-title">البريد الإلكتروني</h3>
+                    <p class="card-description">info@bladimed.com</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📱</div>
+                    <h3 class="card-title" id="phone-title">الهاتف</h3>
+                    <p class="card-description">+216 XX XXX XXX</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📍</div>
+                    <h3 class="card-title" id="location-title">العنوان</h3>
+                    <p class="card-description">تونس العاصمة، تونس</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3 class="footer-logo">BLADI MED</h3>
+                <div class="tunisia-pride">
+                    <div class="footer-flag">
+                        <div class="footer-flag-container">
+                            <div class="footer-flag-red"></div>
+                            <div class="footer-flag-circle">
+                                <div class="footer-flag-crescent"></div>
+                                <div class="footer-flag-star">★</div>
+                            </div>
+                        </div>
+                        <span class="pride-text" id="pride-text">فخر تونسي - منتج محلي طبيعي</span>
+                    </div>
+                </div>
+                <p class="footer-text" id="footer-text">منصة متخصصة في الطب البيولوجي والعلاج بالأعشاب الطبيعية. نهدف إلى نشر الوعي حول أهمية الطب البديل الآمن والفعال.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">📺</a>
+                </div>
+                <p>&copy; 2024 BLADI MED. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language content
+        const content = {
+            ar: {
+                logo: "BLADI MED",
+                tagline: "الطب البيولوجي الطبيعي - رحلتك نحو الصحة الطبيعية",
+                navHome: "الرئيسية",
+                navHerbs: "الأعشاب الطبية",
+                navProducts: "منتجاتنا",
+                navBenefits: "الفوائد", 
+                navAi: "استشارة ذكية",
+                navContact: "تواصل معنا",
+                homeTitle: "مرحباً بكم في عالم الطب الطبيعي",
+                card1Title: "الطب البديل",
+                card1Desc: "اكتشف قوة الطبيعة في علاج الأمراض والوقاية منها بطرق آمنة وفعالة",
+                benefit1: "آمن وبدون آثار جانبية",
+                benefit2: "مستخرج من النباتات الطبيعية",
+                benefit3: "مُختبر علمياً",
+                card2Title: "بديل للكيماويات",
+                card2Desc: "تجنب المخاطر الصحية للأدوية الكيماوية واختر البدائل الطبيعية الآمنة",
+                benefit4: "تقليل السموم في الجسم",
+                benefit5: "تعزيز المناعة الطبيعية", 
+                benefit6: "علاج شامل للجسم",
+                card3Title: "التقنية الحيوية",
+                card3Desc: "استفد من أحدث التقنيات الحيوية في استخلاص المواد الفعالة من النباتات",
+                benefit7: "تقنيات استخلاص متطورة",
+                benefit8: "فحوصات جودة صارمة",
+                benefit9: "توثيق علمي موثوق",
+                herbsTitle: "الأعشاب الطبية المعجزة",
+                thymeTitle: "الزعتر (Thyme)",
+                thymeDesc: "نبات عطري مقدس يحتوي على مركبات طبيعية قوية مضادة للبكتيريا والفيروسات",
+                thyme1: "مضاد حيوي طبيعي قوي",
+                thyme2: "يقوي الجهاز التنفسي",
+                thyme3: "يحسن الهضم",
+                thyme4: "مضاد للأكسدة",
+                thyme5: "يهدئ السعال والالتهابات",
+                thyme6: "يخفض ضغط الدم المرتفع",
+                thyme7: "يحارب الفطريات الجلدية",
+                gingerTitle: "الزنجبيل (Ginger)",
+                gingerDesc: "جذر سحري يحتوي على مركبات الجنجيرول المضادة للالتهابات والغثيان",
+                ginger1: "يقضي على الغثيان والقيء",
+                ginger2: "مضاد قوي للالتهابات",
+                ginger3: "يحسن الدورة الدموية",
+                ginger4: "يساعد في الهضم",
+                ginger5: "يخفف آلام المفاصل",
+                ginger6: "يقوي المناعة",
+                ginger7: "يساعد في إنقاص الوزن",
+                ginger8: "يخفض السكر في الدم",
+                honeyTitle: "العسل الطبيعي",
+                honeyDesc: "مضاد حيوي طبيعي ومصدر طاقة صحي يحتوي على أكثر من 180 مركب نشط",
+                honey1: "مضاد حيوي ومضاد للفطريات",
+                honey2: "يسرع شفاء الجروح",
+                honey3: "يهدئ التهاب الحلق",
+                honey4: "غني بمضادات الأكسدة",
+                honey5: "يحسن صحة القلب",
+                honey6: "يعالج قرح المعدة",
+                honey7: "يحسن جودة النوم",
+                fenugreekTitle: "الحلبة (Fenugreek)",
+                fenugreekDesc: "بذور ذهبية غنية بالبروتينات والفيتامينات، معروفة بفوائدها للنساء والجهاز الهضمي",
+                fenugreek1: "تنظم مستوى السكر في الدم",
+                fenugreek2: "تزيد إدرار حليب الأم",
+                fenugreek3: "تقوي الشعر وتمنع تساقطه",
+                fenugreek4: "تحسن الهضم والشهية",
+                fenugreek5: "تخفض الكولسترول الضار",
+                fenugreek6: "تساعد في زيادة الوزن الصحي",
+                fenugreek7: "تقوي العظام والمفاصل",
+                fenugreek8: "تعالج التهابات الجلد",
+                chamomileTitle: "البابونج (Chamomile)",
+                chamomileDesc: "زهرة الهدوء والسكينة، تحتوي على الأبيجنين والبيسابولول لتهدئة الأعصاب والالتهابات",
+                chamomile1: "يهدئ الأعصاب والقلق",
+                chamomile2: "يحسن جودة النوم",
+                chamomile3: "يعالج مشاكل الهضم",
+                chamomile4: "مضاد طبيعي للالتهابات",
+                chamomile5: "يخفف آلام الدورة الشهرية",
+                chamomile6: "يساعد في علاج الأكزيما",
+                chamomile7: "يقوي الجهاز المناعي",
+                chamomile8: "يخفض ضغط الدم",
+                mintTitle: "النعناع (Mint)",
+                mintDesc: "عشبة منعشة غنية بالمنثول، ممتازة للجهاز الهضمي والتنفسي والتبريد الطبيعي",
+                mint1: "يحسن الهضم ويمنع الانتفاخ",
+                mint2: "ينعش النفس ويطهر الفم",
+                mint3: "يخفف أعراض القولون العصبي",
+                mint4: "يهدئ الصداع والشقيقة",
+                mint5: "يخفف احتقان الجيوب الأنفية",
+                mint6: "مضاد للبكتيريا والفيروسات",
+                mint7: "يساعد في التخسيس",
+                sageTitle: "الميرمية (Sage)",
+                sageDesc: "عشبة الحكمة والذاكرة، غنية بمضادات الأكسدة والمركبات المنشطة للدماغ",
+                sage1: "تحسن الذاكرة والتركيز",
+                sage2: "تنظم الهرمونات الأنثوية",
+                sage3: "تخفف أعراض سن اليأس",
+                sage4: "مضادة للالتهابات والبكتيريا",
+                sage5: "تخفض مستوى السكر",
+                sage6: "تقوي الجهاز العصبي",
+                sage7: "تحسن صحة الفم واللثة",
+                greenTeaTitle: "الشاي الأخضر (Green Tea)",
+                greenTeaDesc: "كنز صحي يحتوي على الكاتيشين والبوليفينول، مشروب طول العمر والحيوية",
+                greenTea1: "محارب قوي للسرطان",
+                greenTea2: "يسرع عملية حرق الدهون",
+                greenTea3: "يحمي صحة القلب",
+                greenTea4: "يحسن وظائف الدماغ",
+                greenTea5: "يخفض الكولسترول",
+                greenTea6: "مضاد للشيخوخة",
+                greenTea7: "ينظم ضغط الدم",
+                blackSeedTitle: "حبة البركة (Black Seed)",
+                blackSeedDesc: '"دواء لكل داء إلا الموت" - بذور سوداء صغيرة تحتوي على الثيموكينون المعجز',
+                blackSeed1: "تقوي الجهاز المناعي بقوة",
+                blackSeed2: "مضادة للسرطان والأورام",
+                blackSeed3: "تعالج الربو والحساسية",
+                blackSeed4: "تنظم السكر والضغط",
+                blackSeed5: "تحمي الكبد من السموم",
+                blackSeed6: "تحسن الخصوبة",
+                blackSeed7: "مضادة للالتهابات",
+                blackSeed8: "تعالج مشاكل الجلد",
+                productsTitle: "منتجاتنا الطبيعية",
+                mainProductTitle: "كوب الأعشاب الطبيعية المختلطة",
+                mainProductSubtitle: "خلطة مثالية من أفضل الأعشاب الطبية في كوب واحد مريح",
+                whyOurProduct: "لماذا منتجنا مميز؟",
+                benefitConvenience: "🎯 سهولة الاستخدام - لا حاجة لشراء أعشاب منفصلة",
+                benefitExpert: "👨‍⚕️ خلطة مدروسة من خبراء الطب البديل",
+                benefitQuality: "✅ أعشاب عضوية 100% بدون مواد كيماوية",
+                benefitEco: "♻️ كوب كرتوني صديق للبيئة قابل للتحلل",
+                benefitFresh: "🌱 طازج ومُعبأ حديثاً بتقنية التفريغ",
+                benefitAffordable: "💰 سعر اقتصادي مقارنة بشراء الأعشاب منفردة",
+                morningMixTitle: "خلطة الصباح المنشطة",
+                morningMixDesc: "مزيج من الشاي الأخضر والزنجبيل والنعناع لبداية يوم مليء بالحيوية والنشاط",
+                ingredientsLabel: "المكونات:",
+                morningIng1: "🫖 شاي أخضر عضوي (40%)",
+                morningIng2: "🧄 زنجبيل مجفف (25%)",
+                morningIng3: "🍃 نعناع طازج (20%)",
+                morningIng4: "🌰 حبة البركة (10%)",
+                morningIng5: "🍯 عسل طبيعي (5%)",
+                morningPrice: "25 دت",
+                eveningMixTitle: "خلطة المساء المهدئة",
+                eveningMixDesc: "تركيبة مثالية من البابونج والميرمية لنوم هادئ وراحة تامة",
+                eveningIng1: "🌼 بابونج ألماني (35%)",
+                eveningIng2: "🌿 ميرمية عضوية (25%)",
+                eveningIng3: "🍃 نعناع خفيف (15%)",
+                eveningIng4: "🌱 زعتر بري (15%)",
+                eveningIng5: "🍯 عسل جبلي (10%)",
+                eveningPrice: "25 دت",
+                immunityMixTitle: "خلطة تقوية المناعة",
+                immunityMixDesc: "مزيج قوي من أفضل الأعشاب المناعية لحمايتك من الأمراض طوال السنة",
+                immunityIng1: "🌰 حبة البركة (30%)",
+                immunityIng2: "🧄 زنجبيل مركز (25%)",
+                immunityIng3: "🌱 زعتر جبلي (20%)",
+                immunityIng4: "🫖 شاي أخضر (15%)",
+                immunityIng5: "🍯 عسل مانوكا (10%)",
+                immunityPrice: "30 دت",
+                womenMixTitle: "خلطة النساء الخاصة",
+                womenMixDesc: "تركيبة مخصصة للنساء لتنظيم الهرمونات وتحسين الصحة الأنثوية",
+                womenIng1: "🌾 حلبة عضوية (30%)",
+                womenIng2: "🌿 ميرمية طبيعية (25%)",
+                womenIng3: "🌼 بابونج ناعم (20%)",
+                womenIng4: "🧄 زنجبيل خفيف (15%)",
+                womenIng5: "🍯 عسل أبيض (10%)",
+                womenPrice: "28 دت",
+                heartMixTitle: "خلطة صحة القلب",
+                heartMixDesc: "مزيج طبيعي لدعم صحة القلب والدورة الدموية وتنظيم ضغط الدم",
+                heartIng1: "🫖 شاي أخضر فاخر (35%)",
+                heartIng2: "🌱 زعتر بري (25%)",
+                heartIng3: "🧄 زنجبيل أحمر (20%)",
+                heartIng4: "🌰 حبة البركة (15%)",
+                heartIng5: "🍯 عسل سدر (5%)",
+                heartPrice: "32 دت",
+                memoryMixTitle: "خلطة تقوية الذاكرة",
+                memoryMixDesc: "تركيبة خاصة لتحسين التركيز والذاكرة ونشاط الدماغ للطلاب والعمال الفكريين",
+                memoryIng1: "🌿 ميرمية مركزة (40%)",
+                memoryIng2: "🫖 شاي أخضر (25%)",
+                memoryIng3: "🍃 نعناع منعش (15%)",
+                memoryIng4: "🧄 زنجبيل طازج (10%)",
+                memoryIng5: "🍯 عسل طبيعي (10%)",
+                memoryPrice: "30 دت",
+                howToUseTitle: "طريقة الاستخدام",
+                step1Title: "افتح الكوب",
+                step1Desc: "افتح الكوب الكرتوني بعناية من الأعلى",
+                step2Title: "أضف الماء الساخن",
+                step2Desc: "اسكب ماء مغلي (200 مل) على الخلطة",
+                step3Title: "انتظر واشرب",
+                step3Desc: "اتركه 5-7 دقائق ثم احرك واستمتع بطعم الصحة",
+                orderTitle: "اطلب الآن واحصل على صحة طبيعية",
+                feature1: "توصيل مجاني لكامل تونس",
+                feature2: "دفع عند الاستلام",
+                feature3: "ضمان الجودة 100%",
+                feature4: "استشارة مجانية مع كل طلب",
+                orderBtn: "اطلب الآن - اتصل بنا",
+                flagLabel: "صنع في تونس",
+                prideText: "فخر تونسي - منتج محلي طبيعي",
+                benefitsTitle: "لماذا الطب البيولوجي؟",
+                safetyTitle: "الأمان أولاً",
+                safetyDesc: "المنتجات الطبيعية آمنة ولا تسبب أضراراً جانبية مثل الأدوية الكيماوية",
+                sustainableTitle: "صديق للبيئة",
+                sustainableDesc: "منتجات قابلة للتحلل ولا تلوث البيئة أو المياه الجوفية",
+                effectiveTitle: "فعالية مثبتة",
+                effectiveDesc: "آلاف السنين من الاستخدام التقليدي مدعومة بالأبحاث العلمية الحديثة",
+                costTitle: "اقتصادي",
+                costDesc: "تكلفة أقل من العلاجات الكيماوية التقليدية",
+                aiTitle: "استشارة طبية ذكية",
+                aiChatTitle: "تحدث مع الطبيب الذكي",
+                aiChatDesc: "اسأل عن الأعشاب المناسبة لحالتك الصحية واحصل على نصائح مخصصة",
+                sendBtn: "إرسال السؤال",
+                chatPlaceholder: "اسأل عن أي عشب أو مشكلة صحية...",
+                contactTitle: "تواصل معنا",
+                emailTitle: "البريد الإلكتروني",
+                phoneTitle: "الهاتف",
+                locationTitle: "العنوان",
+                footerText: "منصة متخصصة في الطب البيولوجي والعلاج بالأعشاب الطبيعية. نهدف إلى نشر الوعي حول أهمية الطب البديل الآمن والفعال."
+            },
+            fr: {
+                logo: "BLADI MED",
+                tagline: "Médecine Biologique Naturelle - Votre voyage vers la santé naturelle",
+                navHome: "Accueil",
+                navHerbs: "Plantes Médicinales",
+                navProducts: "Nos Produits",
+                navBenefits: "Avantages",
+                navAi: "Consultation IA",
+                navContact: "Contact",
+                homeTitle: "Bienvenue dans le monde de la médecine naturelle",
+                card1Title: "Médecine Alternative",
+                card1Desc: "Découvrez la puissance de la nature pour traiter et prévenir les maladies de manière sûre et efficace",
+                benefit1: "Sûr et sans effets secondaires",
+                benefit2: "Extrait de plantes naturelles",
+                benefit3: "Testé scientifiquement",
+                card2Title: "Alternative aux Chimiques",
+                card2Desc: "Évitez les risques sanitaires des médicaments chimiques et choisissez des alternatives naturelles sûres",
+                benefit4: "Réduction des toxines dans le corps",
+                benefit5: "Renforcement de l'immunité naturelle",
+                benefit6: "Traitement complet du corps",
+                card3Title: "Biotechnologie",
+                card3Desc: "Bénéficiez des dernières biotechnologies pour extraire les composés actifs des plantes",
+                benefit7: "Techniques d'extraction avancées",
+                benefit8: "Contrôles qualité stricts",
+                benefit9: "Documentation scientifique fiable",
+                herbsTitle: "Plantes Médicinales Miraculeuses",
+                thymeTitle: "Thym (Thymus)",
+                thymeDesc: "Plante aromatique sacrée contenant des composés naturels puissants antibactériens et antiviraux",
+                thyme1: "Antibiotique naturel puissant",
+                thyme2: "Renforce le système respiratoire",
+                thyme3: "Améliore la digestion",
+                thyme4: "Antioxydant",
+                thyme5: "Calme la toux et les inflammations",
+                thyme6: "Réduit l'hypertension artérielle",
+                thyme7: "Combat les champignons cutanés",
+                gingerTitle: "Gingembre (Zingiber)",
+                gingerDesc: "Racine magique contenant des composés de gingérol anti-inflammatoires et anti-nausées",
+                ginger1: "Élimine les nausées et vomissements",
+                ginger2: "Anti-inflammatoire puissant",
+                ginger3: "Améliore la circulation sanguine",
+                ginger4: "Aide à la digestion",
+                ginger5: "Soulage les douleurs articulaires",
+                ginger6: "Renforce l'immunité",
+                ginger7: "Aide à la perte de poids",
+                ginger8: "Réduit la glycémie",
+                honeyTitle: "Miel Naturel",
+                honeyDesc: "Antibiotique naturel et source d'énergie saine contenant plus de 180 composés actifs",
+                honey1: "Antibiotique et antifongique",
+                honey2: "Accélère la guérison des blessures",
+                honey3: "Apaise les maux de gorge",
+                honey4: "Riche en antioxydants",
+                honey5: "Améliore la santé cardiaque",
+                honey6: "Traite les ulcères gastriques",
+                honey7: "Améliore la qualité du sommeil",
+                fenugreekTitle: "Fenugrec (Trigonella)",
+                fenugreekDesc: "Graines dorées riches en protéines et vitamines, réputées pour leurs bienfaits chez les femmes et le système digestif",
+                fenugreek1: "Régule la glycémie",
+                fenugreek2: "Augmente la lactation maternelle",
+                fenugreek3: "Renforce les cheveux et prévient leur chute",
+                fenugreek4: "Améliore la digestion et l'appétit",
+                fenugreek5: "Réduit le mauvais cholestérol",
+                fenugreek6: "Aide à la prise de poids saine",
+                fenugreek7: "Renforce os et articulations",
+                fenugreek8: "Traite les inflammations cutanées",
+                chamomileTitle: "Camomille (Matricaria)",
+                chamomileDesc: "Fleur de la paix et sérénité, contient apigénine et bisabolol pour calmer nerfs et inflammations",
+                chamomile1: "Calme les nerfs et l'anxiété",
+                chamomile2: "Améliore la qualité du sommeil",
+                chamomile3: "Traite les troubles digestifs",
+                chamomile4: "Anti-inflammatoire naturel",
+                chamomile5: "Soulage les douleurs menstruelles",
+                chamomile6: "Aide à traiter l'eczéma",
+                chamomile7: "Renforce le système immunitaire",
+                chamomile8: "Réduit la pression artérielle",
+                mintTitle: "Menthe (Mentha)",
+                mintDesc: "Plante rafraîchissante riche en menthol, excellente pour les systèmes digestif et respiratoire",
+                mint1: "Améliore la digestion et prévient les ballonnements",
+                mint2: "Rafraîchit l'haleine et purifie la bouche",
+                mint3: "Soulage les symptômes du côlon irritable",
+                mint4: "Calme les maux de tête et migraines",
+                mint5: "Soulage la congestion des sinus",
+                mint6: "Antibactérien et antiviral",
+                mint7: "Aide à la perte de poids",
+                sageTitle: "Sauge (Salvia)",
+                sageDesc: "Herbe de la sagesse et mémoire, riche en antioxydants et composés stimulants pour le cerveau",
+                sage1: "Améliore mémoire et concentration",
+                sage2: "Régule les hormones féminines",
+                sage3: "Soulage les symptômes de la ménopause",
+                sage4: "Anti-inflammatoire et antibactérienne",
+                sage5: "Réduit le taux de sucre",
+                sage6: "Renforce le système nerveux",
+                sage7: "Améliore la santé buccale et gingivale",
+                greenTeaTitle: "Thé Vert (Camellia)",
+                greenTeaDesc: "Trésor santé contenant catéchines et polyphénols, boisson de longévité et vitalité",
+                greenTea1: "Puissant combattant du cancer",
+                greenTea2: "Accélère la combustion des graisses",
+                greenTea3: "Protège la santé cardiaque",
+                greenTea4: "Améliore les fonctions cérébrales",
+                greenTea5: "Réduit le cholestérol",
+                greenTea6: "Anti-âge",
+                greenTea7: "Régule la pression artérielle",
+                blackSeedTitle: "Nigelle (Nigella Sativa)",
+                blackSeedDesc: '"Remède à tout mal sauf la mort" - petites graines noires contenant la thymoquinone miraculeuse',
+                blackSeed1: "Renforce puissamment le système immunitaire",
+                blackSeed2: "Anti-cancer et anti-tumoral",
+                blackSeed3: "Traite l'asthme et allergies",
+                blackSeed4: "Régule sucre et tension",
+                blackSeed5: "Protège le foie des toxines",
+                blackSeed6: "Améliore la fertilité",
+                blackSeed7: "Anti-inflammatoire",
+                blackSeed8: "Traite les problèmes cutanés",
+                productsTitle: "Nos Produits Naturels",
+                mainProductTitle: "Gobelet de Mélange d'Herbes Naturelles",
+                mainProductSubtitle: "Mélange parfait des meilleures herbes médicinales dans un gobelet pratique",
+                whyOurProduct: "Pourquoi notre produit est unique ?",
+                benefitConvenience: "🎯 Facilité d'usage - pas besoin d'acheter des herbes séparément",
+                benefitExpert: "👨‍⚕️ Mélange étudié par des experts en médecine alternative",
+                benefitQuality: "✅ Herbes 100% biologiques sans produits chimiques",
+                benefitEco: "♻️ Gobelet carton écologique biodégradable",
+                benefitFresh: "🌱 Frais et emballé récemment sous vide",
+                benefitAffordable: "💰 Prix économique comparé à l'achat séparé",
+                morningMixTitle: "Mélange Matinal Énergisant",
+                morningMixDesc: "Combinaison de thé vert, gingembre et menthe pour commencer une journée pleine de vitalité",
+                ingredientsLabel: "Ingrédients:",
+                morningIng1: "🫖 Thé vert bio (40%)",
+                morningIng2: "🧄 Gingembre séché (25%)",
+                morningIng3: "🍃 Menthe fraîche (20%)",
+                morningIng4: "🌰 Nigelle (10%)",
+                morningIng5: "🍯 Miel naturel (5%)",
+                morningPrice: "25 DT",
+                eveningMixTitle: "Mélange du Soir Apaisant",
+                eveningMixDesc: "Formule parfaite de camomille et sauge pour un sommeil paisible",
+                eveningIng1: "🌼 Camomille allemande (35%)",
+                eveningIng2: "🌿 Sauge bio (25%)",
+                eveningIng3: "🍃 Menthe douce (15%)",
+                eveningIng4: "🌱 Thym sauvage (15%)",
+                eveningIng5: "🍯 Miel de montagne (10%)",
+                eveningPrice: "25 DT",
+                immunityMixTitle: "Mélange Renforcement Immunité",
+                immunityMixDesc: "Mélange puissant des meilleures herbes immunitaires pour vous protéger toute l'année",
+                immunityIng1: "🌰 Nigelle (30%)",
+                immunityIng2: "🧄 Gingembre concentré (25%)",
+                immunityIng3: "🌱 Thym de montagne (20%)",
+                immunityIng4: "🫖 Thé vert (15%)",
+                immunityIng5: "🍯 Miel de Manuka (10%)",
+                immunityPrice: "30 DT",
+                womenMixTitle: "Mélange Spécial Femmes",
+                womenMixDesc: "Formule dédiée aux femmes pour réguler les hormones et améliorer la santé féminine",
+                womenIng1: "🌾 Fenugrec bio (30%)",
+                womenIng2: "🌿 Sauge naturelle (25%)",
+                womenIng3: "🌼 Camomille douce (20%)",
+                womenIng4: "🧄 Gingembre léger (15%)",
+                womenIng5: "🍯 Miel blanc (10%)",
+                womenPrice: "28 DT",
+                heartMixTitle: "Mélange Santé du Cœur",
+                heartMixDesc: "Mélange naturel pour soutenir la santé cardiaque et la circulation sanguine",
+                heartIng1: "🫖 Thé vert premium (35%)",
+                heartIng2: "🌱 Thym sauvage (25%)",
+                heartIng3: "🧄 Gingembre rouge (20%)",
+                heartIng4: "🌰 Nigelle (15%)",
+                heartIng5: "🍯 Miel de jujubier (5%)",
+                heartPrice: "32 DT",
+                memoryMixTitle: "Mélange Renforcement Mémoire",
+                memoryMixDesc: "Formule spéciale pour améliorer concentration et mémoire pour étudiants et travailleurs intellectuels",
+                memoryIng1: "🌿 Sauge concentrée (40%)",
+                memoryIng2: "🫖 Thé vert (25%)",
+                memoryIng3: "🍃 Menthe rafraîchissante (15%)",
+                memoryIng4: "🧄 Gingembre frais (10%)",
+                memoryIng5: "🍯 Miel naturel (10%)",
+                memoryPrice: "30 DT",
+                howToUseTitle: "Mode d'Emploi",
+                step1Title: "Ouvrir le gobelet",
+                step1Desc: "Ouvrir délicatement le gobelet carton par le haut",
+                step2Title: "Ajouter l'eau chaude",
+                step2Desc: "Verser de l'eau bouillante (200 ml) sur le mélange",
+                step3Title: "Attendre et boire",
+                step3Desc: "Laisser 5-7 minutes puis remuer et savourer le goût de la santé",
+                orderTitle: "Commandez maintenant pour une santé naturelle",
+                feature1: "Livraison gratuite dans toute la Tunisie",
+                feature2: "Paiement à la livraison",
+                feature3: "Garantie qualité 100%",
+                feature4: "Consultation gratuite avec chaque commande",
+                orderBtn: "Commander maintenant - Nous contacter",
+                flagLabel: "Fabriqué en Tunisie",
+                prideText: "Fierté tunisienne - Produit local naturel",
+                benefitsTitle: "Pourquoi la Médecine Biologique ?",
+                safetyTitle: "Sécurité d'abord",
+                safetyDesc: "Les produits naturels sont sûrs et ne causent pas d'effets secondaires comme les médicaments chimiques",
+                sustainableTitle: "Écologique",
+                sustainableDesc: "Produits biodégradables qui ne polluent ni l'environnement ni les eaux souterraines",
+                effectiveTitle: "Efficacité Prouvée",
+                effectiveDesc: "Des milliers d'années d'utilisation traditionnelle soutenue par la recherche scientifique moderne",
+                costTitle: "Économique",
+                costDesc: "Coût inférieur aux traitements chimiques traditionnels",
+                aiTitle: "Consultation Médicale Intelligente",
+                aiChatTitle: "Parlez au Médecin IA",
+                aiChatDesc: "Demandez conseil sur les plantes adaptées à votre état de santé et obtenez des recommandations personnalisées",
+                sendBtn: "Envoyer la Question",
+                chatPlaceholder: "Posez une question sur les plantes ou problèmes de santé...",
+                contactTitle: "Contactez-nous",
+                emailTitle: "Email",
+                phoneTitle: "Téléphone",
+                locationTitle: "Adresse",
+                footerText: "Plateforme spécialisée en médecine biologique et phytothérapie naturelle. Nous visons à sensibiliser à l'importance de la médecine alternative sûre et efficace."
+            },
+            en: {
+                logo: "BLADI MED",
+                tagline: "Natural Biological Medicine - Your journey to natural health",
+                navHome: "Home",
+                navHerbs: "Medicinal Herbs",
+                navProducts: "Our Products",
+                navBenefits: "Benefits",
+                navAi: "AI Consultation",
+                navContact: "Contact",
+                homeTitle: "Welcome to the world of natural medicine",
+                card1Title: "Alternative Medicine",
+                card1Desc: "Discover nature's power in treating and preventing diseases safely and effectively",
+                benefit1: "Safe with no side effects",
+                benefit2: "Extracted from natural plants",
+                benefit3: "Scientifically tested",
+                card2Title: "Chemical Alternative",
+                card2Desc: "Avoid health risks of chemical drugs and choose safe natural alternatives",
+                benefit4: "Reduce toxins in the body",
+                benefit5: "Boost natural immunity",
+                benefit6: "Comprehensive body treatment",
+                card3Title: "Biotechnology",
+                card3Desc: "Benefit from the latest biotechnology in extracting active compounds from plants",
+                benefit7: "Advanced extraction techniques",
+                benefit8: "Strict quality controls",
+                benefit9: "Reliable scientific documentation",
+                herbsTitle: "Miraculous Medicinal Herbs",
+                thymeTitle: "Thyme (Thymus)",
+                thymeDesc: "Sacred aromatic plant containing powerful natural antibacterial and antiviral compounds",
+                thyme1: "Powerful natural antibiotic",
+                thyme2: "Strengthens respiratory system",
+                thyme3: "Improves digestion",
+                thyme4: "Antioxidant",
+                thyme5: "Soothes cough and inflammation",
+                thyme6: "Lowers high blood pressure",
+                thyme7: "Fights skin fungal infections",
+                gingerTitle: "Ginger (Zingiber)",
+                gingerDesc: "Magical root containing gingerol compounds with anti-inflammatory and anti-nausea properties",
+                ginger1: "Eliminates nausea and vomiting",
+                ginger2: "Powerful anti-inflammatory",
+                ginger3: "Improves blood circulation",
+                ginger4: "Aids digestion",
+                ginger5: "Relieves joint pain",
+                ginger6: "Boosts immunity",
+                ginger7: "Aids in weight loss",
+                ginger8: "Lowers blood sugar",
+                honeyTitle: "Natural Honey",
+                honeyDesc: "Natural antibiotic and healthy energy source containing over 180 active compounds",
+                honey1: "Antibiotic and antifungal",
+                honey2: "Speeds wound healing",
+                honey3: "Soothes sore throat",
+                honey4: "Rich in antioxidants",
+                honey5: "Improves heart health",
+                honey6: "Treats stomach ulcers",
+                honey7: "Improves sleep quality",
+                fenugreekTitle: "Fenugreek (Trigonella)",
+                fenugreekDesc: "Golden seeds rich in proteins and vitamins, known for benefits to women and digestive system",
+                fenugreek1: "Regulates blood sugar levels",
+                fenugreek2: "Increases breast milk production",
+                fenugreek3: "Strengthens hair and prevents loss",
+                fenugreek4: "Improves digestion and appetite",
+                fenugreek5: "Lowers bad cholesterol",
+                fenugreek6: "Helps with healthy weight gain",
+                fenugreek7: "Strengthens bones and joints",
+                fenugreek8: "Treats skin inflammations",
+                chamomileTitle: "Chamomile (Matricaria)",
+                chamomileDesc: "Flower of peace and tranquility, contains apigenin and bisabolol to calm nerves and inflammation",
+                chamomile1: "Calms nerves and anxiety",
+                chamomile2: "Improves sleep quality",
+                chamomile3: "Treats digestive problems",
+                chamomile4: "Natural anti-inflammatory",
+                chamomile5: "Relieves menstrual pain",
+                chamomile6: "Helps treat eczema",
+                chamomile7: "Strengthens immune system",
+                chamomile8: "Lowers blood pressure",
+                mintTitle: "Mint (Mentha)",
+                mintDesc: "Refreshing herb rich in menthol, excellent for digestive and respiratory systems and natural cooling",
+                mint1: "Improves digestion and prevents bloating",
+                mint2: "Freshens breath and cleanses mouth",
+                mint3: "Relieves irritable bowel syndrome symptoms",
+                mint4: "Soothes headaches and migraines",
+                mint5: "Relieves sinus congestion",
+                mint6: "Antibacterial and antiviral",
+                mint7: "Aids in weight loss",
+                sageTitle: "Sage (Salvia)",
+                sageDesc: "Herb of wisdom and memory, rich in antioxidants and brain-stimulating compounds",
+                sage1: "Improves memory and concentration",
+                sage2: "Regulates female hormones",
+                sage3: "Relieves menopause symptoms",
+                sage4: "Anti-inflammatory and antibacterial",
+                sage5: "Lowers sugar levels",
+                sage6: "Strengthens nervous system",
+                sage7: "Improves oral and gum health",
+                greenTeaTitle: "Green Tea (Camellia)",
+                greenTeaDesc: "Health treasure containing catechins and polyphenols, drink of longevity and vitality",
+                greenTea1: "Powerful cancer fighter",
+                greenTea2: "Accelerates fat burning process",
+                greenTea3: "Protects heart health",
+                greenTea4: "Improves brain functions",
+                greenTea5: "Lowers cholesterol",
+                greenTea6: "Anti-aging properties",
+                greenTea7: "Regulates blood pressure",
+                blackSeedTitle: "Black Seed (Nigella Sativa)",
+                blackSeedDesc: '"Cure for everything except death" - small black seeds containing miraculous thymoquinone',
+                blackSeed1: "Powerfully strengthens immune system",
+                blackSeed2: "Anti-cancer and anti-tumor",
+                blackSeed3: "Treats asthma and allergies",
+                blackSeed4: "Regulates sugar and blood pressure",
+                blackSeed5: "Protects liver from toxins",
+                blackSeed6: "Improves fertility",
+                blackSeed7: "Anti-inflammatory",
+                blackSeed8: "Treats skin problems",
+                productsTitle: "Our Natural Products",
+                mainProductTitle: "Natural Herbal Mix Cup",
+                mainProductSubtitle: "Perfect blend of the finest medicinal herbs in one convenient cup",
+                whyOurProduct: "Why is our product special?",
+                benefitConvenience: "🎯 Easy to use - no need to buy separate herbs",
+                benefitExpert: "👨‍⚕️ Expert-crafted blend by alternative medicine specialists",
+                benefitQuality: "✅ 100% organic herbs without chemicals",
+                benefitEco: "♻️ Eco-friendly biodegradable cardboard cup",
+                benefitFresh: "🌱 Fresh and recently vacuum-packed",
+                benefitAffordable: "💰 Economical price compared to buying herbs separately",
+                morningMixTitle: "Morning Energy Mix",
+                morningMixDesc: "Combination of green tea, ginger and mint for a day full of vitality and energy",
+                ingredientsLabel: "Ingredients:",
+                morningIng1: "🫖 Organic green tea (40%)",
+                morningIng2: "🧄 Dried ginger (25%)",
+                morningIng3: "🍃 Fresh mint (20%)",
+                morningIng4: "🌰 Black seed (10%)",
+                morningIng5: "🍯 Natural honey (5%)",
+                morningPrice: "25 TND",
+                eveningMixTitle: "Evening Calming Mix",
+                eveningMixDesc: "Perfect formula of chamomile and sage for peaceful sleep and complete rest",
+                eveningIng1: "🌼 German chamomile (35%)",
+                eveningIng2: "🌿 Organic sage (25%)",
+                eveningIng3: "🍃 Light mint (15%)",
+                eveningIng4: "🌱 Wild thyme (15%)",
+                eveningIng5: "🍯 Mountain honey (10%)",
+                eveningPrice: "25 TND",
+                immunityMixTitle: "Immunity Boost Mix",
+                immunityMixDesc: "Powerful blend of the best immune herbs to protect you all year round",
+                immunityIng1: "🌰 Black seed (30%)",
+                immunityIng2: "🧄 Concentrated ginger (25%)",
+                immunityIng3: "🌱 Mountain thyme (20%)",
+                immunityIng4: "🫖 Green tea (15%)",
+                immunityIng5: "🍯 Manuka honey (10%)",
+                immunityPrice: "30 TND",
+                womenMixTitle: "Women's Special Mix",
+                womenMixDesc: "Dedicated formula for women to regulate hormones and improve feminine health",
+                womenIng1: "🌾 Organic fenugreek (30%)",
+                womenIng2: "🌿 Natural sage (25%)",
+                womenIng3: "🌼 Gentle chamomile (20%)",
+                womenIng4: "🧄 Light ginger (15%)",
+                womenIng5: "🍯 White honey (10%)",
+                womenPrice: "28 TND",
+                heartMixTitle: "Heart Health Mix",
+                heartMixDesc: "Natural blend to support heart health, circulation and blood pressure regulation",
+                heartIng1: "🫖 Premium green tea (35%)",
+                heartIng2: "🌱 Wild thyme (25%)",
+                heartIng3: "🧄 Red ginger (20%)",
+                heartIng4: "🌰 Black seed (15%)",
+                heartIng5: "🍯 Sidr honey (5%)",
+                heartPrice: "32 TND",
+                memoryMixTitle: "Memory Enhancement Mix",
+                memoryMixDesc: "Special formula to improve concentration and memory for students and intellectual workers",
+                memoryIng1: "🌿 Concentrated sage (40%)",
+                memoryIng2: "🫖 Green tea (25%)",
+                memoryIng3: "🍃 Refreshing mint (15%)",
+                memoryIng4: "🧄 Fresh ginger (10%)",
+                memoryIng5: "🍯 Natural honey (10%)",
+                memoryPrice: "30 TND",
+                howToUseTitle: "How to Use",
+                step1Title: "Open the cup",
+                step1Desc: "Carefully open the cardboard cup from the top",
+                step2Title: "Add hot water",
+                step2Desc: "Pour boiling water (200 ml) over the mixture",
+                step3Title: "Wait and drink",
+                step3Desc: "Leave for 5-7 minutes then stir and enjoy the taste of health",
+                orderTitle: "Order now and get natural health",
+                feature1: "Free delivery throughout Tunisia",
+                feature2: "Payment on delivery",
+                feature3: "100% quality guarantee",
+                feature4: "Free consultation with every order",
+                orderBtn: "Order Now - Contact Us",
+                flagLabel: "Made in Tunisia",
+                prideText: "Tunisian Pride - Natural Local Product",
+                benefitsTitle: "Why Biological Medicine?",
+                safetyTitle: "Safety First",
+                safetyDesc: "Natural products are safe and don't cause side effects like chemical medicines",
+                sustainableTitle: "Eco-friendly",
+                sustainableDesc: "Biodegradable products that don't pollute the environment or groundwater",
+                effectiveTitle: "Proven Effectiveness",
+                effectiveDesc: "Thousands of years of traditional use supported by modern scientific research",
+                costTitle: "Economic",
+                costDesc: "Lower cost than traditional chemical treatments",
+                aiTitle: "Smart Medical Consultation",
+                aiChatTitle: "Talk to AI Doctor",
+                aiChatDesc: "Ask about suitable herbs for your health condition and get personalized advice",
+                sendBtn: "Send Question",
+                chatPlaceholder: "Ask about any herb or health issue...",
+                contactTitle: "Contact Us",
+                emailTitle: "Email",
+                phoneTitle: "Phone",
+                locationTitle: "Address",
+                footerText: "Platform specialized in biological medicine and natural herbal therapy. We aim to raise awareness about the importance of safe and effective alternative medicine."
+            }
+        };
+
+        let currentLang = 'ar';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            
+            // Update active language button
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Update document direction
+            document.documentElement.setAttribute('lang', lang);
+            document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            
+            // Update content
+            const langContent = content[lang];
+            
+            // Update all text elements
+            Object.keys(langContent).forEach(key => {
+                const element = document.getElementById(key.replace(/([A-Z])/g, '-$1').toLowerCase());
+                if (element) {
+                    if (element.tagName === 'INPUT') {
+                        element.placeholder = langContent[key];
+                    } else {
+                        // Handle span elements for navigation
+                        const span = element.querySelector('span');
+                        if (span) {
+                            span.textContent = langContent[key];
+                        } else {
+                            element.textContent = langContent[key];
+                        }
+                    }
+                }
+            });
+
+            // Update placeholder specifically
+            const chatInput = document.getElementById('chatInput');
+            if (chatInput) {
+                chatInput.placeholder = langContent.chatPlaceholder;
+            }
+        }
+
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionName).classList.add('active');
+            
+            // Update navigation
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        async function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const response = document.getElementById('chatResponse');
+            const question = input.value.trim();
+            
+            if (!question) return;
+            
+            // Show loading
+            response.style.display = 'block';
+            response.innerHTML = '<div style="text-align: center;">🤔 جاري التفكير...</div>';
+            
+            // Simulate AI response based on language and question
+            setTimeout(() => {
+                let answer = '';
+                
+                if (currentLang === 'ar') {
+                    if (question.includes('زعتر') || question.includes('thyme')) {
+                        answer = '🌱 الزعتر ممتاز لعلاج مشاكل الجهاز التنفسي والهضم. يمكنك شرب شاي الزعتر 3 مرات يومياً أو استخدام زيت الزعتر للدهان الخارجي. يحتوي على الثيمول المضاد للبكتيريا والفطريات، ويساعد في خفض ضغط الدم المرتفع.';
+                    } else if (question.includes('زنجبيل') || question.includes('ginger')) {
+                        answer = '🧄 الزنجبيل رائع للغثيان والالتهابات. انقع ملعقة صغيرة من الزنجبيل المبشور في كوب ماء ساخن لمدة 10 دقائق واشربه. يساعد في الهضم وتقوية المناعة، ويساعد أيضاً في إنقاص الوزن وتنظيم السكر.';
+                    } else if (question.includes('عسل') || question.includes('honey')) {
+                        answer = '🍯 العسل الطبيعي مضاد حيوي ممتاز. تناول ملعقة كبيرة على الريق يومياً. للالتهابات، امزجه مع عصير الليمون والزنجبيل. يساعد أيضاً في علاج قرح المعدة وتحسين النوم.';
+                    } else if (question.includes('حلبة') || question.includes('fenugreek')) {
+                        answer = '🌾 الحلبة مفيدة جداً للنساء والهضم. انقع ملعقة من بذور الحلبة في كوب ماء طوال الليل واشربه صباحاً. تنظم السكر، تزيد حليب الأم، وتقوي الشعر. يمكن طحنها واستعمالها كماسك للوجه.';
+                    } else if (question.includes('بابونج') || question.includes('chamomile')) {
+                        answer = '🌼 البابونج ملك الأعشاب المهدئة. اشرب كوب من شاي البابونج قبل النوم بساعة للحصول على نوم هادئ. ممتاز للقلق، مشاكل الهضم، وآلام الدورة الشهرية للنساء.';
+                    } else if (question.includes('نعناع') || question.includes('mint')) {
+                        answer = '🍃 النعناع منعش ومفيد للهضم. اشرب شاي النعناع بعد الوجبات الثقيلة. يخفف الانتفاخ، ينعش النفس، ويساعد في علاج القولون العصبي والصداع.';
+                    } else if (question.includes('ميرمية') || question.includes('sage')) {
+                        answer = '🌿 الميرمية عشبة الذاكرة والحكمة. اشرب شايها صباحاً لتحسين التركيز والذاكرة. مفيدة للنساء في تنظيم الهرمونات وتخفيف أعراض سن اليأس.';
+                    } else if (question.includes('شاي أخضر') || question.includes('green tea')) {
+                        answer = '🫖 الشاي الأخضر كنز صحي حقيقي. اشرب 2-3 أكواب يومياً (لكن ليس على معدة فارغة). يحارب السرطان، يساعد في حرق الدهون، ويحمي القلب والدماغ.';
+                    } else if (question.includes('حبة البركة') || question.includes('black seed')) {
+                        answer = '🌰 حبة البركة "دواء لكل داء إلا الموت". تناول ملعقة صغيرة من الزيت يومياً أو اطحن البذور واخلطها مع العسل. تقوي المناعة بشدة وتحارب السرطان والربو.';
+                    } else if (question.includes('منتج') || question.includes('كوب') || question.includes('خلطة') || question.includes('product')) {
+                        answer = '🥤 لدينا 6 خلطات مميزة: خلطة الصباح المنشطة (25 دت)، خلطة المساء المهدئة (25 دت)، خلطة تقوية المناعة (30 دت)، خلطة النساء الخاصة (28 دت)، خلطة صحة القلب (32 دت)، وخلطة تقوية الذاكرة (30 دت). كل كوب يحتوي على مزيج مثالي من الأعشاب الطبيعية.';
+                    } else if (question.includes('سعر') || question.includes('ثمن') || question.includes('تكلفة') || question.includes('price')) {
+                        answer = '💰 أسعارنا: خلطة الصباح والمساء 25 دت لكل منها، خلطة النساء 28 دت، خلطة المناعة والذاكرة 30 دت لكل منها، وخلطة القلب 32 دت. توصيل مجاني لكامل تونس ودفع عند الاستلام!';
+                    } else if (question.includes('توصيل') || question.includes('شحن') || question.includes('delivery')) {
+                        answer = '🚚 نوفر توصيل مجاني لكامل تونس! يمكنك الدفع عند الاستلام مع ضمان الجودة 100%. كما نقدم استشارة مجانية مع كل طلب لضمان اختيار الخلطة المناسبة لك.';
+                    } else {
+                        answer = '💡 أهلاً بك في BLADI MED! يمكنك السؤال عن: الأعشاب (الزعتر، الزنجبيل، العسل، الحلبة، البابونج، النعناع، الميرمية، الشاي الأخضر، حبة البركة) أو منتجاتنا (6 خلطات مختلفة) أو الأسعار والتوصيل.';
+                    }
+                } else if (currentLang === 'fr') {
+                    if (question.includes('thym') || question.includes('thyme')) {
+                        answer = '🌱 Le thym est excellent pour les problèmes respiratoires et digestifs. Buvez une tisane de thym 3 fois par jour ou utilisez l\'huile de thym en application externe. Il contient du thymol antibactérien et aide à réduire l\'hypertension.';
+                    } else if (question.includes('gingembre') || question.includes('ginger')) {
+                        answer = '🧄 Le gingembre est merveilleux contre les nausées et inflammations. Infusez une cuillère à café de gingembre râpé dans de l\'eau chaude pendant 10 minutes. Il aide à la digestion, renforce l\'immunité et favorise la perte de poids.';
+                    } else if (question.includes('miel') || question.includes('honey')) {
+                        answer = '🍯 Le miel naturel est un excellent antibiotique. Prenez une cuillère à soupe à jeun quotidiennement. Pour les inflammations, mélangez avec du citron et du gingembre. Il traite aussi les ulcères gastriques.';
+                    } else if (question.includes('fenugrec') || question.includes('fenugreek')) {
+                        answer = '🌾 Le fenugrec est très bénéfique pour les femmes et la digestion. Trempez une cuillère de graines toute la nuit et buvez le matin. Régule le sucre, augmente la lactation et renforce les cheveux.';
+                    } else if (question.includes('camomille') || question.includes('chamomile')) {
+                        answer = '🌼 La camomille est la reine des plantes apaisantes. Buvez une tisane une heure avant le coucher pour un sommeil paisible. Excellente pour l\'anxiété et les troubles digestifs.';
+                    } else if (question.includes('produit') || question.includes('gobelet') || question.includes('mélange')) {
+                        answer = '🥤 Nous avons 6 mélanges spéciaux: Mélange Matinal (25 DT), Mélange du Soir (25 DT), Renforcement Immunité (30 DT), Spécial Femmes (28 DT), Santé Cœur (32 DT), et Renforcement Mémoire (30 DT). Chaque gobelet contient un mélange parfait d\'herbes naturelles.';
+                    } else if (question.includes('prix') || question.includes('coût')) {
+                        answer = '💰 Nos prix: Mélanges Matin et Soir 25 DT chacun, Spécial Femmes 28 DT, Immunité et Mémoire 30 DT chacun, Santé Cœur 32 DT. Livraison gratuite en Tunisie et paiement à la livraison!';
+                    } else if (question.includes('livraison')) {
+                        answer = '🚚 Livraison gratuite dans toute la Tunisie! Paiement à la livraison avec garantie qualité 100%. Consultation gratuite avec chaque commande.';
+                    } else {
+                        answer = '💡 Bienvenue chez BLADI MED! Demandez conseil sur: les herbes (thym, gingembre, miel, fenugrec, camomille, menthe, sauge, thé vert, nigelle) ou nos produits (6 mélanges) ou les prix et livraison.';
+                    }
+                } else {
+                    if (question.includes('thyme')) {
+                        answer = '🌱 Thyme is excellent for respiratory and digestive issues. Drink thyme tea 3 times daily or use thyme oil for external application. Contains antibacterial thymol and helps lower high blood pressure.';
+                    } else if (question.includes('ginger')) {
+                        answer = '🧄 Ginger is wonderful for nausea and inflammation. Steep one teaspoon of grated ginger in hot water for 10 minutes. Aids digestion, boosts immunity, and helps with weight loss.';
+                    } else if (question.includes('honey')) {
+                        answer = '🍯 Natural honey is an excellent antibiotic. Take one tablespoon on empty stomach daily. For inflammation, mix with lemon and ginger. Also treats stomach ulcers.';
+                    } else if (question.includes('fenugreek')) {
+                        answer = '🌾 Fenugreek is very beneficial for women and digestion. Soak seeds overnight and drink in the morning. Regulates blood sugar, increases lactation, and strengthens hair.';
+                    } else if (question.includes('chamomile')) {
+                        answer = '🌼 Chamomile is the queen of calming herbs. Drink tea one hour before bedtime for peaceful sleep. Excellent for anxiety and digestive issues.';
+                    } else if (question.includes('product') || question.includes('cup') || question.includes('mix')) {
+                        answer = '🥤 We have 6 special mixes: Morning Energy Mix (25 TND), Evening Calming Mix (25 TND), Immunity Boost Mix (30 TND), Women\'s Special Mix (28 TND), Heart Health Mix (32 TND), and Memory Enhancement Mix (30 TND). Each cup contains a perfect blend of natural herbs.';
+                    } else if (question.includes('price') || question.includes('cost')) {
+                        answer = '💰 Our prices: Morning and Evening mixes 25 TND each, Women\'s Special 28 TND, Immunity and Memory 30 TND each, Heart Health 32 TND. Free delivery throughout Tunisia and payment on delivery!';
+                    } else if (question.includes('delivery') || question.includes('shipping')) {
+                        answer = '🚚 Free delivery throughout Tunisia! Payment on delivery with 100% quality guarantee. Free consultation with every order.';
+                    } else {
+                        answer = '💡 Welcome to BLADI MED! Ask about: herbs (thyme, ginger, honey, fenugreek, chamomile, mint, sage, green tea, black seed) or our products (6 different mixes) or prices and delivery.';
+                    }
+                }
+                
+                response.innerHTML = answer;
+                input.value = '';
+            }, 2000);
+        }
+
+        // Enter key for chat
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Initialize floating leaves animation
+        function createLeaf() {
+            const leaf = document.createElement('div');
+            leaf.className = 'leaf';
+            leaf.style.left = Math.random() * 100 + '%';
+            leaf.style.animationDelay = Math.random() * 15 + 's';
+            leaf.style.animationDuration = (15 + Math.random() * 10) + 's';
+            document.querySelector('.floating-leaves').appendChild(leaf);
+            
+            setTimeout(() => {
+                leaf.remove();
+            }, 25000);
+        }
+
+        // Create new leaves periodically
+        setInterval(createLeaf, 3000);
+    </script>
+</body>
+</html>

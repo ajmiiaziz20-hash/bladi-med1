@@ -405,11 +405,30 @@
     }
 
     .product-price {
-        margin-top: 20px;
-        font-size: 1.6rem;
+        margin-top: 16px;
+        display: inline-block;
+        font-size: 1rem;
         font-weight: 800;
-        color: var(--accent);
-        text-shadow: 0 0 20px rgba(0,230,118,0.4);
+        color: #fff;
+        background: linear-gradient(145deg, #1a7a4a, #0d5c35);
+        padding: 6px 18px;
+        border-radius: 8px;
+        box-shadow: 
+            0 4px 0 #073d22,
+            0 6px 8px rgba(0,0,0,0.4),
+            inset 0 1px 0 rgba(255,255,255,0.15);
+        transform: perspective(200px) rotateX(5deg);
+        letter-spacing: 0.5px;
+        border: 1px solid rgba(0,230,118,0.3);
+        transition: all 0.2s ease;
+    }
+    
+    .product-card:hover .product-price {
+        transform: perspective(200px) rotateX(5deg) translateY(-2px);
+        box-shadow: 
+            0 6px 0 #073d22,
+            0 8px 12px rgba(0,0,0,0.5),
+            inset 0 1px 0 rgba(255,255,255,0.2);
     }
 
     /* Main Product Showcase */
@@ -1333,103 +1352,37 @@
                     <div class="product-icon">🌅</div>
                     <h3 class="card-title" id="morning-mix-title">خلطة الصباح المنشطة</h3>
                     <p class="card-description" id="morning-mix-desc">مزيج من الشاي الأخضر والزنجبيل والنعناع لبداية يوم مليء بالحيوية والنشاط</p>
-                    <div class="ingredients-list">
-                        <h5 id="ingredients-label">المكونات:</h5>
-                        <ul class="card-benefits">
-                            <li id="morning-ing1">🫖 شاي أخضر عضوي (40%)</li>
-                            <li id="morning-ing2">🧄 زنجبيل مجفف (25%)</li>
-                            <li id="morning-ing3">🍃 نعناع طازج (20%)</li>
-                            <li id="morning-ing4">🌰 حبة البركة (10%)</li>
-                            <li id="morning-ing5">🍯 عسل طبيعي (5%)</li>
-                        </ul>
-                    </div>
-                    <div class="product-price" id="morning-price">25 دت</div>
-                </div>
+                    
 
                 <div class="product-card">
                     <div class="product-icon">🌙</div>
                     <h3 class="card-title" id="evening-mix-title">خلطة المساء المهدئة</h3>
                     <p class="card-description" id="evening-mix-desc">تركيبة مثالية من البابونج والميرمية لنوم هادئ وراحة تامة</p>
-                    <div class="ingredients-list">
-                        <h5 id="ingredients-label2">المكونات:</h5>
-                        <ul class="card-benefits">
-                            <li id="evening-ing1">🌼 بابونج ألماني (35%)</li>
-                            <li id="evening-ing2">🌿 ميرمية عضوية (25%)</li>
-                            <li id="evening-ing3">🍃 نعناع خفيف (15%)</li>
-                            <li id="evening-ing4">🌱 زعتر بري (15%)</li>
-                            <li id="evening-ing5">🍯 عسل جبلي (10%)</li>
-                        </ul>
-                    </div>
-                    <div class="product-price" id="evening-price">25 دت</div>
-                </div>
+                    
 
                 <div class="product-card">
                     <div class="product-icon">💪</div>
                     <h3 class="card-title" id="immunity-mix-title">خلطة تقوية المناعة</h3>
                     <p class="card-description" id="immunity-mix-desc">مزيج قوي من أفضل الأعشاب المناعية لحمايتك من الأمراض طوال السنة</p>
-                    <div class="ingredients-list">
-                        <h5 id="ingredients-label3">المكونات:</h5>
-                        <ul class="card-benefits">
-                            <li id="immunity-ing1">🌰 حبة البركة (30%)</li>
-                            <li id="immunity-ing2">🧄 زنجبيل مركز (25%)</li>
-                            <li id="immunity-ing3">🌱 زعتر جبلي (20%)</li>
-                            <li id="immunity-ing4">🫖 شاي أخضر (15%)</li>
-                            <li id="immunity-ing5">🍯 عسل مانوكا (10%)</li>
-                        </ul>
-                    </div>
-                    <div class="product-price" id="immunity-price">30 دت</div>
-                </div>
+                    
 
                 <div class="product-card">
                     <div class="product-icon">🌸</div>
                     <h3 class="card-title" id="women-mix-title">خلطة النساء الخاصة</h3>
                     <p class="card-description" id="women-mix-desc">تركيبة مخصصة للنساء لتنظيم الهرمونات وتحسين الصحة الأنثوية</p>
-                    <div class="ingredients-list">
-                        <h5 id="ingredients-label4">المكونات:</h5>
-                        <ul class="card-benefits">
-                            <li id="women-ing1">🌾 حلبة عضوية (30%)</li>
-                            <li id="women-ing2">🌿 ميرمية طبيعية (25%)</li>
-                            <li id="women-ing3">🌼 بابونج ناعم (20%)</li>
-                            <li id="women-ing4">🧄 زنجبيل خفيف (15%)</li>
-                            <li id="women-ing5">🍯 عسل أبيض (10%)</li>
-                        </ul>
-                    </div>
-                    <div class="product-price" id="women-price">28 دت</div>
-                </div>
+                    
 
                 <div class="product-card">
                     <div class="product-icon">🫀</div>
                     <h3 class="card-title" id="heart-mix-title">خلطة صحة القلب</h3>
                     <p class="card-description" id="heart-mix-desc">مزيج طبيعي لدعم صحة القلب والدورة الدموية وتنظيم ضغط الدم</p>
-                    <div class="ingredients-list">
-                        <h5 id="ingredients-label5">المكونات:</h5>
-                        <ul class="card-benefits">
-                            <li id="heart-ing1">🫖 شاي أخضر فاخر (35%)</li>
-                            <li id="heart-ing2">🌱 زعتر بري (25%)</li>
-                            <li id="heart-ing3">🧄 زنجبيل أحمر (20%)</li>
-                            <li id="heart-ing4">🌰 حبة البركة (15%)</li>
-                            <li id="heart-ing5">🍯 عسل سدر (5%)</li>
-                        </ul>
-                    </div>
-                    <div class="product-price" id="heart-price">32 دت</div>
-                </div>
+                    
 
                 <div class="product-card">
                     <div class="product-icon">🧠</div>
                     <h3 class="card-title" id="memory-mix-title">خلطة تقوية الذاكرة</h3>
                     <p class="card-description" id="memory-mix-desc">تركيبة خاصة لتحسين التركيز والذاكرة ونشاط الدماغ للطلاب والعمال الفكريين</p>
-                    <div class="ingredients-list">
-                        <h5 id="ingredients-label6">المكونات:</h5>
-                        <ul class="card-benefits">
-                            <li id="memory-ing1">🌿 ميرمية مركزة (40%)</li>
-                            <li id="memory-ing2">🫖 شاي أخضر (25%)</li>
-                            <li id="memory-ing3">🍃 نعناع منعش (15%)</li>
-                            <li id="memory-ing4">🧄 زنجبيل طازج (10%)</li>
-                            <li id="memory-ing5">🍯 عسل طبيعي (10%)</li>
-                        </ul>
-                    </div>
-                    <div class="product-price" id="memory-price">30 دت</div>
-                </div>
+                    
             </div>
 
             <!-- How to Use Section -->
